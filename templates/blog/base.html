@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <title>{% block title %}{% endblock %} </title>
+   {% include 'blog/head.html' %}
+    {% block head %}{% endblock %}
+    {% block style %}{% endblock %}
+  </head>
+  <body>
+    
+
+
+    {% include "blog/header.html" %}
+    <!-- END header -->
+    {% block content %}
+    
+    {% endblock %}
+    
+    <section class="site-section py-sm">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="mb-4">{% block main_content_title %}{% endblock %}</h2>
+          </div>
+        </div>
+        <div class="row blog-entries">
+          <!-- main content block -->
+          {% block main_content %}{% endblock %}
+
+          <!-- block main content -->
+    
+          <!-- END main-content -->
+          {% include 'blog/sidebar-box.html' %}
+    
+        </div>
+      </div>
+    </section>
+    <!-- /BLOCK CONTENT -->
+
+ 
+  
+    {% include "blog/footer.html" %}
+    <!-- END footer -->
+    
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+    {% include "blog/script.html" %}
+
+    {% block script %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,145 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+Colorlib Balita &mdash; Minimal Blog Template
+{% endblock %}
+
+{% load static %}
+{% block content %}
+   <!-- BLOCK CONTENT -->
+   <section class="site-section pt-5">
+    <div class="container">
+      <!-- slide begins -->
+      <div class="row">
+        <div class="col-md-12">
+  
+          <div class="owl-carousel owl-theme home-slider">
+            {% for slide in slides %}
+            <!-- single slide -->
+            <div>
+              <a href="{{slide.get_absolute_url}}" class="a-block d-flex align-items-center height-lg" style="background-image: url('{{slide.featured_image.url}} ');">
+                <div class="text half-to-full ml-6"  style="margin-left: 10%;">
+                  <div class="post-meta">
+                    <span class="category">{{slide.category}} </span>
+                    <span class="mr-2">{{slide.pub_date}} </span> &bullet;
+                    <span class="ml-2"><span class="fa fa-comments"></span>{{slide.comment_count}} </span>
+                  </div>
+                  <h3>{{slide.title}}</h3>
+                  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta eaque ipsa laudantium!</p> -->
+                </div>
+              </a>
+            </div>
+            <!-- single slide ends -->
+            {% endfor %}
+          </div>
+          
+        </div>
+      </div>
+      <!-- slide ends -->
+  
+      <div class="row">
+        
+        {% for t in top %}
+        <!-- top 3 -->
+        <div class="col-md-6 col-lg-4">
+          <a href="{{t.get_absolute_url}}" class="a-block d-flex align-items-center height-md" style="background-image: url('{{t.featured_image.url}}');">
+            <div class="text">
+              <div class="post-meta">
+                <span class="category">{{t.category}}</span>
+                <span class="mr-2">{{t.pub_date}} </span> &bullet;
+                <span class="ml-2"><span class="fa fa-comments"></span> {{t.comment_count}}</span>
+              </div>
+              <h3>{{t.title}}</h3>
+            </div>
+          </a>
+        </div>
+        <!-- top 3 ends -->
+        {% endfor %}
+        
+        
+       
+    </div>
+  
+  
+  </section>
+  <!-- END section -->
+{% endblock %}
+
+{% block main_content_title %}Lifestyle Category{% endblock %}
+{% block main_content %}
+<div class="col-md-12 col-lg-8 main-content">
+  <div class="row">
+    
+    
+    {% for single in lifestyle_post %}
+    <!-- single card -->
+    <div class="col-md-6">
+      <a href="{{single.get_absolute_url}}" class="blog-entry element-animate" data-animate-effect="fadeIn">
+        <img src="{{single.featured_image.url}}" alt="Image placeholder">
+        <div class="blog-content-body">
+          <div class="post-meta">
+            <span class="category">{{single.category}}</span>
+            <span class="mr-2">{{single.pub_date}}</span> &bullet;
+            <span class="ml-2"><span class="fa fa-comments"></span>{{single.comment_count}} </span>
+          </div>
+          <h2>{{single.title}}</h2>
+        </div>
+      </a>
+    </div>
+    <!-- single card end -->
+    {% endfor %}
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <nav aria-label="Page navigation" class="text-center">
+        <ul class="pagination">
+          <li class="page-item  active"><a class="page-link" href="#">Prev</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="row mb-5 mt-5">
+
+    <div class="col-md-12">
+      <h2 class="mb-4">More Blog Posts</h2>
+    </div>
+
+    <div class="col-md-12">
+
+      {% for post in more_blog_post %}
+      <div class="post-entry-horzontal">
+        <a href="{{post.get_absolute_url}}">
+          <div class="image element-animate"  data-animate-effect="fadeIn" style="background-image: url('{{post.featured_image.url}}');"></div>
+          <span class="text">
+            <div class="post-meta">
+              <span class="category">{{post.category}}</span>
+              <span class="mr-2">{{post.pub_date}}</span> &bullet;
+              <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+            </div>
+            <h2>{{post.title}}</h2>
+          </span>
+        </a>
+      </div>
+      <!-- END post -->
+      {% endfor %}
+
+
+      
+     
+
+    </div>
+  </div>
+
+  
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% load static %}
+<section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="mb-3 ">Related Post</h2>
+        </div>
+      </div>
+      <div class="row">
+          {% for post in related_post %}
+        <div class="col-md-6 col-lg-4">
+          <a href="{{post.get_absolute_url}}" class="a-block d-flex align-items-center height-md" style="background-image: url('{{post.featured_image.url}}'); ">
+            <div class="text">
+              <div class="post-meta">
+                <span class="category">Lifestyle</span>
+                <span class="mr-2">March 15, 2018 </span> &bullet;
+                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+              </div>
+              <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
+            </div>
+          </a>
+        </div>
+            {% endfor %}
+        
+      </div>
+    </div>
+
+
+  </section>
+  <!-- END section -->

@@ -1,0 +1,100 @@
+{% load static %}
+<!-- search form and profile -->
+<div class="col-md-12 col-lg-4 sidebar">
+    <div class="sidebar-box search-form-wrap">
+      <form action="#" class="search-form">
+        <div class="form-group">
+          <span class="icon fa fa-search"></span>
+          <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+        </div>
+      </form>
+    </div>
+    <!-- END sidebar-box -->
+    {% if request.user.is_authenticated %}
+    <div class="sidebar-box">
+      <div class="bio text-center">
+        <img src="{{profile.profile_pic.url}} " alt="profile picture Placeholder" class="img-fluid">
+        <div class="bio-body">
+          <h2>{{profile.user.username}} </h2>
+          <p>{{profile.about_me}} </p>
+          <p><a href="#" class="btn btn-primary btn-sm">Read my bio</a></p>
+          <p class="social">
+            <a href="{{profile.facebook}} " class="p-2"><span class="fa fa-facebook"></span></a>
+            <a href="{{profile.twitter}} " class="p-2"><span class="fa fa-twitter"></span></a>
+            <a href="{{profile.instagram}} " class="p-2"><span class="fa fa-instagram"></span></a>
+            <a href="{{profile.youtube}} " class="p-2"><span class="fa fa-youtube-play"></span></a>
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <!-- END sidebar-box -->  
+    <div class="sidebar-box">
+      <h3 class="heading">Popular Posts</h3>
+      <div class="post-entry-sidebar">
+        <ul>
+          <li>
+            <a href="">
+              <img src="{% static 'blog/images/img_2.jpg' %}" alt="Image placeholder" class="mr-4">
+              <div class="text">
+                <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
+                <div class="post-meta">
+                  <span class="mr-2">March 15, 2018 </span> &bullet;
+                  <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="{% static 'blog/images/img_4.jpg' %}" alt="Image placeholder" class="mr-4">
+              <div class="text">
+                <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
+                <div class="post-meta">
+                  <span class="mr-2">March 15, 2018 </span> &bullet;
+                  <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="{% static 'blog/images/img_12.jpg' %}" alt="Image placeholder" class="mr-4">
+              <div class="text">
+                <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
+                <div class="post-meta">
+                  <span class="mr-2">March 15, 2018 </span> &bullet;
+                  <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- END sidebar-box -->
+
+    <div class="sidebar-box">
+      <h3 class="heading">Categories</h3>
+      <ul class="categories">
+        <li><a href="#">Courses <span>(12)</span></a></li>
+        <li><a href="#">News <span>(22)</span></a></li>
+        <li><a href="#">Design <span>(37)</span></a></li>
+        <li><a href="#">HTML <span>(42)</span></a></li>
+        <li><a href="#">Web Development <span>(14)</span></a></li>
+      </ul>
+    </div>
+    <!-- END sidebar-box -->
+
+    <div class="sidebar-box">
+      <h3 class="heading">Tags</h3>
+      <ul class="tags">
+        {% for tag in tags %}
+        <li><a href="{% url 'blog:list' list_tag=tag %}?list_type=tag ">{{tag}}</a></li>
+        {% endfor %}
+       
+      </ul>
+    </div>
+  </div>
+  <!-- search forms and profile ends -->
+  <!-- END sidebar -->
